@@ -1,0 +1,21 @@
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    align-items: center;
+    margin-block: 40px;
+}
+p {
+    color: white;
+}
+.temperature {
+    font-size: 3.4rem;
+    font-weight: bold;
+}
+span {
+    font-size: 1.5rem;
+}
+.temp-info {
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+}

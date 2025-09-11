@@ -1,15 +1,23 @@
 import styles from './WeatherDetail.module.css'
-const WeatherDetail = ({ weatherData }) => {
+const WeatherDetail = ({ weatherData, error }) => {
     if (!weatherData) return <p></p>
     return (
-        <>
-            <div className={styles["weather-info"]}>
-                <img className={styles['weather-image']} src={`../../src/assets/icons/${weatherData.weather[0].main.toLowerCase()}.svg`} />
-                <p className={styles['temperature']}>{Math.floor(weatherData.main.temp)}<sup><span>°C</span></sup></p>
-                <p className={styles['temp-info']}>{weatherData.weather[0].description}</p>
-            </div>
-        </>
-    )
+        <div className={styles["weather-info"]}>
+            {
+                error ? (
+                    <p>Invalid Input<p />
+                        : (weatherData) ?
+                        (
+                        <>
+                            <img className={styles['weather-image']} src={`../../src/assets/icons/${weatherData.weather[0].main.toLowerCase()}.svg`} />
+                            <p className={styles['temperature']}>{Math.floor(weatherData.main.temp)}<sup><span>°C</span></sup></p>
+                            <p className={styles['temp-info']}>{weatherData.weather[0].description}</p>
+                        </>
+                        ) : (
+                        <p>Enter a city to get Weather</p>
+                        )
+                        )}
+                    </div>)
 }
 
 export default WeatherDetail

@@ -4,7 +4,7 @@ const WeatherDetail = ({ weatherData, error }) => {
     return (
         <div className={styles["weather-info"]}>
             {error ? (
-                <p>Invalid Input</p>
+                <p className={styles['error-msg']}>Invalid Input</p>
             ) : weatherData ? (
                 <>
                     <img
@@ -28,7 +28,7 @@ const WeatherDetail = ({ weatherData, error }) => {
                     </div>
                 </>
             ) : (
-                <p>Enter a city to get Weather</p>
+                <p className={styles['error-msg']}>Enter a city name</p>
             )}
         </div>
     )

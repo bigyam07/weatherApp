@@ -17,7 +17,7 @@ const SearchSection = ({ setWeatherData, setError }) => {
                 else return response.json();
             })
             .then(data => {
-                if(!data) return;
+                if (!data) return;
                 console.log(data);
                 setWeatherData(data);
                 setError(false);
@@ -31,16 +31,33 @@ const SearchSection = ({ setWeatherData, setError }) => {
             return;
         }
         fetchData(city);
-
+        setCity("");
     }
     return (
         <>
             <div className={styles["search-container"]}>
                 <div className={styles["search-section"]}>
-                    <div className={styles["search-icon"]}><label htmlFor="input-text"><i className="fa-solid fa-magnifying-glass"></i></label></div>
-                    <input type='text' placeholder='Enter a city name' id="input-text" value={city} onChange={(e) => setCity(e.target.value)} />
+                    <div className={styles["search-icon"]}>
+                        <label htmlFor="input-text"><i className="fa-solid fa-magnifying-glass"></i></label>
+                    </div>
+                    <input
+                        type='text'
+                        placeholder='Enter a city name'
+                        id="input-text"
+                        value={city}
+                        onChange={(e) => setCity(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                                handleSearchInput();
+                            }
+                        }}
+                    />
                 </div>
-                <button className={styles['location-btn']} onClick={handleSearchInput}><i className="fa-solid fa-location-crosshairs"></i></button>
+                <button
+                    className={styles['location-btn']}
+                    onClick={handleSearchInput}>
+                    <i className="fa-solid fa-location-crosshairs"></i>
+                </button>
             </div>
         </>
     )

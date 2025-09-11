@@ -39,3 +39,7 @@ span {
     font-weight: bold;
     letter-spacing: initial;
 }
+.error-msg {
+    font-size: 1.4rem;
+    font-weight: 500;
+}

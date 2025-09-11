@@ -18,6 +18,7 @@ const SearchSection = ({ setWeatherData, setError }) => {
             })
             .then(data => {
                 if(!data) return;
+                console.log(data);
                 setWeatherData(data);
                 setError(false);
             }).catch(error => {

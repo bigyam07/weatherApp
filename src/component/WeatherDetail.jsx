@@ -16,12 +16,15 @@ const WeatherDetail = ({ weatherData, error }) => {
                         {Math.floor(weatherData.main.temp)}
                         <sup><span>°C</span></sup>
                     </p>
+                    <p className={styles['city-name']}>
+                        {weatherData.name}
+                    </p>
                     <p className={styles['temp-info']}>
                         {weatherData.weather[0].description}
                     </p>
                     <div className={styles['wind-humidity']}>
-                        <div className={styles['wind']}>10</div>
-                        <div className={styles['humidity']}>10</div>
+                        <div className={styles['wind']}>Wind<p>{weatherData.wind.speed}Km/h</p></div>
+                        <div className={styles['humidity']}>Humidity<p>{weatherData.main.humidity}%</p></div>
                     </div>
                 </>
             ) : (

@@ -1,7 +1,6 @@
 .weather-info {
     display: flex;
     flex-direction: column;
-    gap: 13px;
     align-items: center;
     margin-block: 40px;
 }
@@ -15,10 +14,28 @@ p {
 span {
     font-size: 1.8rem;
 }
+.city-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
 .temp-info {
     letter-spacing: 2px;
     font-size: 0.85rem;
 }
 .wind-humidity {
-    
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+.wind-humidity div {
+    color: white;
+    letter-spacing: 3px;
+    text-align: center;
+}
+
+.wind-humidity p{
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: initial;
 }

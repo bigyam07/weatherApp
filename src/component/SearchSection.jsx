@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styles from './SearchSection.module.css'
 
-const SearchSection = ({ setWeatherData }) => {
+const SearchSection = ({ setWeatherData, setError }) => {
     const [city, setCity] = useState("");
     async function fetchData(city) {
         const API_KEY = "7d9f0e29eb6c9dc415759327b143a9a1";
@@ -10,18 +10,22 @@ const SearchSection = ({ setWeatherData }) => {
             .then(response => {
                 if (!response.ok) {
                     console.log("Response Error From API!!");
+                    setError(true);
+                    setWeatherData(null);
+                    return null;
                 }
-                return response.json();
+                else return response.json();
             })
             .then(data => {
-                console.log(data);
+                if(!data) return;
                 setWeatherData(data);
+                setError(false);
             }).catch(error => {
                 console.log("Error, Could not get Data: ", error.message)
             })
     }
     function handleSearchInput() {
-        if (!city.trim()) {
+        if (city.trim() == "") {
             console.log("Please!!, Enter the city name");
             return;
         }
